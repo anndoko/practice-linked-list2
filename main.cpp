@@ -3,7 +3,7 @@
 using namespace std;
 
 //struct of a node
-//store: (1)date; (2)link
+//store: (1)data; (2)link
 
 
 struct Node{
