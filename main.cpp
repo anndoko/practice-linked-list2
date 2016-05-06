@@ -13,16 +13,15 @@ struct Node{
 };
 
 /*----------insert a number to the list----------
-Pass the pointer to Node as return from this method.
-Main has to collect the return.
+Receive pointer to pointer.
 */
 
-Node* Insert(Node* head, int x){
+void Insert(Node** pointerToHead, int x){
     Node* temp = (Node*)malloc(sizeof(struct Node));
     temp->data = x;
-    temp->link = head;
-    head = temp;
-    return head; //return head
+    temp->link = NULL;
+    if(*pointerToHead != NULL) temp->link = *pointerToHead;
+    *pointerToHead = temp;
 }
 
 
@@ -45,7 +44,7 @@ int main() {
     for(i = 0; i < n; i++){
         cout << "Enter the number: " << endl;
         cin >> x;
-        head = Insert(head, x); //head collects the return from the Insert function into head
+        Insert(&head, x); // pass the variable head by reference
         Print(head);
     }
     return 0;
